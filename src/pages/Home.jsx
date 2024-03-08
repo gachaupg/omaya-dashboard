@@ -8,7 +8,7 @@ const Home = () => {
     <div className='mt-1 w-full flex flex-col items-'>
       <h1>Dashboard</h1>
       <div className="flex items-center gap-3 flex-wrap">
-        <div style={{width:'24%'}} className="flex flex-col border p-2 rounded-lg shadow-2xl pr-2">
+        <div style={{width:'25.8%'}} className="flex flex-col border p-2 rounded-lg shadow-2xl pr-2">
           <h3>Total Money Transfer</h3>
           <LineChart
 
@@ -24,7 +24,7 @@ const Home = () => {
           <h2 className='flex items-center'> $ 10.9k span <span className='text-red-600 flex items-center ml-3'> <MdOutlineArrowDropDown />-4.66%</span></h2>
           <p>last week</p>
         </div>
-        <div style={{width:'24%'}} className="flex flex-col border p-2 rounded-lg shadow-2xl pr-2">
+        <div style={{width:'25.8%'}} className="flex flex-col border p-2 rounded-lg shadow-2xl pr-2">
           <h3>Total Commission</h3>
           <LineChart
             xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
@@ -39,7 +39,7 @@ const Home = () => {
           <h2 className='flex items-center'> $ 10.9k span <span className='text-red-600 flex items-center ml-3'> <MdOutlineArrowDropDown />-4.66%</span></h2>
           <p>last week</p>
         </div>
-        <div style={{width:'24%'}} className="flex flex-col border p-2 rounded-lg shadow-2xl pr-2">
+        <div style={{width:'25.8%'}} className="flex flex-col border p-2 rounded-lg shadow-2xl pr-2">
           <h3>Total Withdraw</h3>
           <LineChart
             xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
