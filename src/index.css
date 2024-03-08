@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.appbar{
+  background-color: aliceblue !important;
+  color: black !important;
+}
+
+.drawer{
+  background-color: rgb(43, 42, 42) !important;
+  color: aliceblue !important;
+    border-radius: 1rem !important;
+
+}
+
+.chart{
+  
+}
+.ex{
+  margin: 0  !important;
+  padding-left: 1rem !important;
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+
+.list{
+  gap: 4rem !important;
+
+}
