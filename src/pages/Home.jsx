@@ -8,7 +8,7 @@ const Home = () => {
     <div className='mt-1 w-full flex flex-col items-'>
       <h1>Dashboard</h1>
       <div className="flex items-center gap-3 flex-wrap">
-        <div style={{width:'25.8%'}} className="flex flex-col border p-2 rounded-lg shadow-2xl pr-2">
+        <div style={{width:'25%'}} className="flex flex-col border p-2 rounded-lg shadow-2xl pr-2">
           <h3>Total Money Transfer</h3>
           <LineChart
 
