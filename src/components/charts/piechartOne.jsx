@@ -69,7 +69,7 @@ const DonutChart = () => {
               <p className='w-5 h-5 bg-slate-600 rounded-lg'></p>
               <div>
                 <p className='text-slate-400'>FXPRIMUS</p>
-                <h3 className='text-xl'>65.324K</h3>
+                <h3 className='text-xl'>65.354K</h3>
               </div>
             </p>
           </div>

@@ -1,38 +1,57 @@
-import { useState } from 'react';
-import { FiMail, FiLock, FiEye, FiEyeOff } from 'react-icons/fi'; // Import icons from react-icons library
+import {
+  MDBBtn,
+  MDBContainer,
+  MDBCard,
+  MDBCardBody,
+  MDBInput,
+  MDBCheckbox
+}
+  from 'mdb-react-ui-kit';
+import { useState } from "react";
 
-const Login = () => {
-  const [showPassword, setShowPassword] = useState(false);
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { login } from "../redux/features/authSlice";
+const initialState = {
+  password: "",
+  email: "",
+};
+function Login() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [user, setUser] = useState(initialState);
+  const { loading } = useSelector((state) => ({ ...state.auth }));
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+  console.log(user);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (user.email) {
+      dispatch(login({ user, navigate, toast }));
+    }
   };
 
   return (
-    <div className="flex items-center justify-center mt-24 gap-6 flex-col">
-      <h2 className="text-2xl">Welcome</h2>
-      <p>Please login</p>
-      <img src="https://res.cloudinary.com/pitz/image/upload/v1707497590/logo-hiXpVEuB-removebg-preview_jnnrfa.png" alt="" />
-      <form style={{width:'45%'}} className="abt flex flex-col gap-5" action="">
-        <div className="relative">
-          <FiMail className="absolute top-3 left-3 text-gray-400" />
-          <input className="pl-10 border border-green-400 h-12 w-full rounded-2xl" type="email" placeholder="Enter your Email" />
-        </div>
-        <div className="relative">
-          <FiLock className="absolute top-3 left-3 text-gray-400" />
-          <input className="pl-10 border border-green-400 h-12 w-full rounded-2xl" type={showPassword ? 'text' : 'password'} placeholder="Enter your Password" />
-          <span onClick={togglePasswordVisibility} className="absolute top-3 right-3 cursor-pointer">
-            {showPassword ? <FiEyeOff /> : <FiEye />}
-          </span>
-        </div>
-        <div className="flex items-center">
-          <input type="checkbox" className="mr-2" id="rememberMe" />
-          <label htmlFor="rememberMe">Remember me</label>
-        </div>
-        <button className="border border-green-400 h-12 w-full rounded-2xl bg-green-500 text-white">Log in</button>
-      </form>
-    </div>
+    <MDBContainer fluid className='d-flex align-items-center justify-content-center p-14 bg-image' style={{ backgroundImage: 'url(https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp)' }}>
+      <div className='mask gradient-custom-3'></div>
+      <MDBCard className='mt-16 mb-48 abt' style={{ width: '600px' }}>
+        <MDBCardBody className='px-5'>
+          <h2 className="text-uppercase text-center mb-5">Login to your account</h2>
+          <MDBInput onChange={(e) => setUser({ ...user, email: e.target.value })}
+            wrapperClass='mb-4' label='Your Email' size='lg' id='form2' type='email' />
+          <MDBInput onChange={(e) => setUser({ ...user, password: e.target.value })}
+            wrapperClass='mb-4' label='Password' size='lg' id='form3' type='password' />
+
+          <div className='d-flex flex-row justify-content-center mb-4'>
+            <MDBCheckbox name='flexCheck' id='flexCheckDefault' label='I agree all statements in Terms of service' />
+          </div>
+          <p className='ml-24'>If have an account <Link to='/register'>Register</Link></p>
+
+          <MDBBtn onClick={handleSubmit} className='mb-4 w-100 gradient-custom-4' size='lg'>  {loading ? "Submitting" : "Login"}</MDBBtn>
+        </MDBCardBody>
+      </MDBCard>
+    </MDBContainer>
   );
-};
+}
 
 export default Login;

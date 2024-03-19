@@ -1,135 +1,32 @@
-import { LineChart } from '@mui/x-charts/LineChart';
-import { MdOutlineArrowDropDown } from "react-icons/md";
-import DonutChart from '../components/charts/piechartOne';
-import DonutChart1 from '../components/charts/pi2';
+import { useSelector } from "react-redux";
+import Card from "../components/Card"
+import Hero from "./hero"
 
 const Home = () => {
-  return (
-    <div className='mt-1 w-full flex flex-col items-'>
-      <h1>Dashboard</h1>
-      <div className="flex items-center gap-2 flex-wrap">
-        <div style={{width:'23%'}} className="flex flex-col border p-2 rounded-lg shadow-2xl pr-2">
-          <h3>Total Money Transfer</h3>
-          <LineChart
+    const { user } = useSelector((state) => ({ ...state.auth }));
+    return (
+        <div className="flex items-center justify-between flex-col">
+            <Hero />
+            <div className="wrapper flex flex-col items- justify-center">
+               <h5 className="text-2xl caret-lime-400 mb-3">My Statistics</h5>
+            <div className="abt h-32 flex w-full items-center flex-wrap text-white justify-between p-2 rounded-lg bg-slate-500">
+                <div className="flex flex-col p-1 items-start">
+                    <h6>INTRODUCTION {user?.result?._id}</h6>
 
-            xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
-            series={[
-              {
-                data: [2, 5.5, 2, 8.5, 1.5, 5],
-              },
-            ]}
-            width={300}
-            height={280}
-          />
-          <h2 className='flex items-center'> $ 10.9k span <span className='text-red-600 flex items-center ml-3'> <MdOutlineArrowDropDown />-4.66%</span></h2>
-          <p>last week</p>
+                    <div className="flex items- gap-2 justify-center w-64 ">
+                        <p>Balance:</p>
+                        <h6 className='pt-1'>ksh {user?.result?.amount + user?.result?.refer}</h6>
+                    </div>
+                </div>
+                <button className="bg-green-300 hover:bg-green-600 text-black font-bold py-2 px-4 rounded">
+                    Click to earn
+                </button>
+            </div>
+             <Card/>
+
+            </div>
         </div>
-        <div style={{width:'23%'}} className="flex flex-col border p-2 rounded-lg shadow-2xl pr-2">
-          <h3>Total Commission</h3>
-          <LineChart
-            xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
-            series={[
-              {
-                data: [2, 5.5, 2, 8.5, 1.5, 5],
-              },
-            ]}
-            width={300}
-            height={280}
-          />
-          <h2 className='flex items-center'> $ 10.9k span <span className='text-red-600 flex items-center ml-3'> <MdOutlineArrowDropDown />-4.66%</span></h2>
-          <p>last week</p>
-        </div>
-        <div style={{width:'23%'}} className="flex flex-col border p-2 rounded-lg shadow-2xl pr-2">
-          <h3>Total Withdraw</h3>
-          <LineChart
-            xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
-            series={[
-              {
-                data: [2, 5.5, 2, 8.5, 1.5, 5],
-              },
-            ]}
-            width={300}
-            height={280}
-          />
-          <h2 className='flex items-center'> $ 10.9k span <span className='text-red-600 flex items-center ml-3'> <MdOutlineArrowDropDown />-4.66%</span></h2>
-          <p>last week</p>
-        </div>
-        <div style={{width:'23%'}} className="flex flex-col border p-2 rounded-lg shadow-2xl pr-2">
-          <h3>Total Deposits</h3>
-          <LineChart
-            xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
-            series={[
-              {
-                data: [2, 5.5, 2, 8.5, 1.5, 5],
-              },
-            ]}
-            width={300}
-            height={280}
-          />
-          <h2 className='flex items-center'> $ 10.9k span <span className='text-red-600 flex items-center ml-3'> <MdOutlineArrowDropDown />-4.66%</span></h2>
-          <p>last week</p>
-        </div>
-      </div>
-      <div className="flex w-full items-center gap-12 flex-wrap mt-5">
-        <div style={{width:'43%'}} className="flex flex-col items- justify-center  border bg-slate-100 shadow-2xl rounded-2xl p-2 h-80">
-          <DonutChart />
-        </div>
-        <div style={{width:'24%'}} className="flex flex-col items-center justify- pt-3 w-80  border bg-slate-100 shadow-2xl rounded-2xl 2 h-80">
-          <DonutChart1 />
-        </div>
-        <div style={{width:'24%'}} className="flex flex-col items-center justify- pt-3 w-80  border bg-slate-100 shadow-2xl rounded-2xl 2 h-80">
-          <DonutChart1 />
-        </div>
-      </div>
-      <div className="flex items-center mt-8 gap-1 mb-16 flex-wrap">
-        <div className="flex flex-col items- justify-center w-96 border bg-slate-100 shadow-2xl rounded-2xl p-2 h-80">
-          <h3>Commission for the month</h3>
-          <LineChart
-            xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
-            series={[
-              {
-                data: [2, 5.5, 2, 8.5, 1.5, 5],
-              },
-            ]}
-            width={400}
-            height={280}
-          />
-          <h2 className='flex items-center'> $ 10.9k span <span className='text-red-600 flex items-center ml-3'> <MdOutlineArrowDropDown />-4.66%</span></h2>
-          <p>last week</p>
-        </div>
-        <div className="flex flex-col items- justify-center w-96 border bg-slate-100 shadow-2xl rounded-2xl p-2 h-80">
-          <h3>New Users</h3>
-          <LineChart
-            xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
-            series={[
-              {
-                data: [2, 5.5, 2, 8.5, 1.5, 5],
-              },
-            ]}
-            width={400}
-            height={280}
-          />
-          <h2 className='flex items-center'> $ 10.9k span <span className='text-red-600 flex items-center ml-3'> <MdOutlineArrowDropDown />-4.66%</span></h2>
-          <p>last week</p>
-        </div>
-        <div className="flex flex-col items- justify-center w-96 border bg-slate-100 shadow-2xl rounded-2xl p-2 h-80">
-          <h3>Total Transfers for the month</h3>
-          <LineChart
-            xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
-            series={[
-              {
-                data: [2, 5.5, 2, 8.5, 1.5, 5],
-              },
-            ]}
-            width={400}
-            height={280}
-          />
-          <h2 className='flex items-center'> $ 10.9k span <span className='text-red-600 flex items-center ml-3'> <MdOutlineArrowDropDown />-4.66%</span></h2>
-          <p>last week</p>
-        </div>
-      </div>
-    </div>
-  )
+    )
 }
 
 export default Home
